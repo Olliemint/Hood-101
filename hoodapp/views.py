@@ -1,3 +1,4 @@
+from telnetlib import AUTHENTICATION
 from django.shortcuts import render
 from .models import *
 
@@ -29,3 +30,14 @@ def Profile_view(request):
     
     
     return render(request,'hoodapp/profile.html')
+
+
+
+
+
+# AUTHENTICATION SECTION
+
+def Register_user(request):
+    
+    
+    return render(request,'accounts/register.html')
