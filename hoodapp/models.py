@@ -13,7 +13,7 @@ class Category(models.Model):
 
 class Neighbourhood(models.Model):
     name = models.CharField(max_length=255)
-    locattion = models.ForeignKey(Location,on_delete=models.CASCADE)
+    location = models.ForeignKey(Location,on_delete=models.CASCADE)
     occupants_count = models.IntegerField(default=0,blank=True,null=True)
     police_num = models.IntegerField()
     hospital_num = models.IntegerField()
@@ -23,9 +23,10 @@ class Business(models.Model):
     
     name = models.CharField(max_length=255)    
     email_address = models.EmailField(max_length=255)
-    location = models.ForeignKey(Location,on_delete=models.CASCADE)
+    location = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.TextField(max_length=1000)
+    image = models.ImageField(default='business.jpg', blank=True)
     
     
 class Profile(models.Model):
@@ -34,14 +35,13 @@ class Profile(models.Model):
     bio = models.TextField(max_length=1500,null=True,blank=True)
     email_address = models.EmailField(max_length=255,null=True, blank=True) 
     avatar = models.ImageField(default='avatar.jpg',upload_to='profiles')
-    location = models.ForeignKey(Location,on_delete=models.CASCADE,blank=True,null=True)   
+    neighbourhood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE,blank=True,null=True)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE, blank=True,null=True)   
     
     
 
-    
-    
-    
-class Post(models.Model):
+        
+class Hood_update(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(max_length=1000,null=False, blank=False)
     author = models.ForeignKey(User,on_delete=models.CASCADE,blank=True,null=True)

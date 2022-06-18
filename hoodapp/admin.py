@@ -7,7 +7,7 @@ admin.site.register(Location)
 admin.site.register(Category)
 admin.site.register(Neighbourhood)
 admin.site.register(Business)
-admin.site.register(Post)
+admin.site.register(Hood_update)
 admin.site.register(Profile)
 
 
