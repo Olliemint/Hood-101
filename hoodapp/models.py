@@ -6,9 +6,16 @@ from django.contrib.auth.models import User
 class Location(models.Model):
     name = models.CharField(max_length=255)
     
+    def __str__(self):
+        
+        return self.name
+    
     
 class Category(models.Model):
     category_name = models.CharField(max_length=80,null=False,blank=False)
+    def __str__(self):
+    
+        return self.category_name
 
 
 class Neighbourhood(models.Model):
@@ -23,10 +30,10 @@ class Business(models.Model):
     
     name = models.CharField(max_length=255)    
     email_address = models.EmailField(max_length=255)
-    location = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
+    neighbourhood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.TextField(max_length=1000)
-    image = models.ImageField(default='business.jpg', blank=True)
+    image = models.ImageField(default='business.jpg',upload_to='bizimages', blank=True)
     
     
 class Profile(models.Model):
