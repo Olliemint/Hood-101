@@ -1,4 +1,4 @@
-from telnetlib import AUTHENTICATION
+from .forms import *
 from django.shortcuts import render
 from .models import *
 
@@ -38,6 +38,9 @@ def Profile_view(request):
 # AUTHENTICATION SECTION
 
 def Register_user(request):
+    form = Register_Form()
     
-    
-    return render(request,'accounts/register.html')
+    context={
+        'form': form,
+    }
+    return render(request,'accounts/register.html',context)
