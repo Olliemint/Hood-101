@@ -1,5 +1,5 @@
 from .forms import *
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import *
 
 # Create your views here.
@@ -10,7 +10,7 @@ def Business_view(request):
         'business': business
     }
     
-    return render(request, 'hoodapp/business.html',context)
+    return render(request, 'hood/home.html',context)
 
 
 def Neighbourhood_view(request):
@@ -39,6 +39,12 @@ def Profile_view(request):
 
 def Register_user(request):
     form = Register_Form()
+    
+    if request.method == 'POST':
+        form = Register_Form(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('hood:home')
     
     context={
         'form': form,
