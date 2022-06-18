@@ -14,5 +14,18 @@ def Business_view(request):
 
 def Neighbourhood_view(request):
     
+    neighbourhood = Neighbourhood.objects.all()
     
-    return render(request, 'hoodapp/neighbourhood.html',)
+    context = {
+        'neighbourhood': neighbourhood
+    }
+    
+    
+    return render(request, 'hoodapp/neighbourhood.html',context)
+
+
+def Profile_view(request):
+    
+    
+    
+    return render(request,'hoodapp/profile.html')
