@@ -38,7 +38,7 @@ class Neighbourhood(models.Model):
         
         return self.name
     
-    def create_neigborhood(self):
+    def create_neigbourhood(self):
         self.save()
 
     @classmethod
@@ -47,8 +47,8 @@ class Neighbourhood(models.Model):
 
     @classmethod
     def find_neigbourhood(cls, searchterm):
-        searchresults = cls.objects.filter(Q(name__icontains=searchterm))
-        return searchresults
+        search_results = cls.objects.filter(Q(name__icontains=searchterm))
+        return search_results
 
     @classmethod
     def update_neighbourhood(cls, id, name):
@@ -68,6 +68,17 @@ class Business(models.Model):
         
         return self.name
     
+    def save_business(self):
+        self.save()
+
+    @classmethod
+    def delete_business(cls, id): 
+        cls.objects.filter(id=id).delete()
+
+    @classmethod
+    def searchbusiness(cls, searchterm):
+        search_results = cls.objects.filter(Q(name__icontains = searchterm))
+        return search_results
     
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -93,6 +104,13 @@ class Hood_update(models.Model):
     def __str__(self):
         
         return self.title
+    
+    def save_update(self):
+        self.save()
+
+    @classmethod
+    def delete_update(cls, id):
+        cls.objects.filter(id=id).delete()
   
             
     
