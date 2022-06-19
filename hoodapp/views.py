@@ -1,5 +1,4 @@
-from multiprocessing import context
-import re
+
 from .forms import *
 from django.shortcuts import render,redirect
 from .models import *
@@ -20,6 +19,16 @@ def home(request):
 
 def Updates_view(request):
     
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        author = request.user
+        neighbourhood = request.user.profile.neighbourhood
+        category = request.POST.get('category')
+        image = request.FILES.get('upload')
+        print(category)
+        post = Hood_update.objects.create(title=title, description=description, author=author, neighbourhood = neighbourhood,category=category, image=image)
+    
     stories = Hood_update.objects.filter(category__category_name='Announcements',
         neighbourhood=request.user.profile.neighbourhood)
     
@@ -31,18 +40,29 @@ def Updates_view(request):
     
     neibdetails = Neighbourhood.objects.get(
             name=request.user.profile.neighbourhood)
+    categories = Category.objects.all() 
     
     context = {
         'stories': stories,
         'alerts': alerts,
         'events': events,
         'neibdetails': neibdetails,
+        'categories': categories
         }
     
     return render(request, 'hood/updates.html',context)
 
 @login_required(login_url='hood:login') 
 def Business_view(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email_address = request.POST.get('email_address')
+        neighbourhood = request.user.profile.neighbourhood
+        author = request.user
+        description = request.POST.get('description')
+        image = request.FILES.get('upload')
+        biz = Business.objects.create(name=name,email_address=email_address,neighbourhood=neighbourhood,author=author,description=description,image=image)
+    
     if request.user.profile.neighbourhood is None:
         messages.success(request, 'Please fillout you Neighbourhood')
         return redirect('hood:profile')
