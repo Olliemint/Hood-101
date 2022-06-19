@@ -36,6 +36,8 @@
 #cardstory{
     border: 10px 10px 10px 10px;
     margin-left: 2rem;
+    
+    height: 25rem;
 }
 .authorimg{
 
@@ -50,4 +52,29 @@
     height: 15rem;
 
 
+}
+#event{
+    width: 23rem;
+    height: 5rem;
+    border-radius: 10px 10px 10px 10px;
+
+}
+.btn22{
+    background-color: #64CC90;
+    border: #64CC90;
+    height: 3rem;
+    width: 12rem;
+    border-radius: 22px 22px 22px 22px;
+    margin-left: 1rem;
+    color: #ffffff;
+    font-weight: 600;
+
+
+}
+
+.btn22:hover{
+    background-color: orangered;
+    transform: scale(1.1);
+    transition: .3s ease-in-out;
+    color: #ffffff;
 }

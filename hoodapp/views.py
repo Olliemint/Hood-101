@@ -26,9 +26,17 @@ def Updates_view(request):
     alerts = Hood_update.objects.filter(category__category_name='Alerts',
         neighbourhood=request.user.profile.neighbourhood)
     
+    events = Hood_update.objects.filter(category__category_name='Events',
+    neighbourhood=request.user.profile.neighbourhood)
+    
+    neibdetails = Neighbourhood.objects.get(
+            name=request.user.profile.neighbourhood)
+    
     context = {
         'stories': stories,
-        'alerts': alerts
+        'alerts': alerts,
+        'events': events,
+        'neibdetails': neibdetails,
         }
     
     return render(request, 'hood/updates.html',context)
@@ -48,7 +56,7 @@ def Business_view(request):
     context = {
         'business': business,
         'category': category,
-        'neibdetails': neibdetails
+        'neibdetails': neibdetails,
     }
     return render(request, 'hood/business.html',context)
 

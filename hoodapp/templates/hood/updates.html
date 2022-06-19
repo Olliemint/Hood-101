@@ -62,31 +62,13 @@
           <li class="list-group-item"><span class="iconify" data-icon="bxs:contact" style="color: #64cc90;" data-width="22" data-height="22"></span>~{{neibdetails.police_num}}</li>
 
         </ul>
-        <a class="btn btn-success btn-block btn-md " href="">Add business</a>
 
-      </div>
-        <div class="py-4">
-        <div class="card" style="width: 18rem;">
-          <div class="card-header">
-          <h3>Neighbourhood updates</h3>
-          </div>
-          <ul class="list-group list-group-flush " id="ul">
-            <li class="list-group-item">
-                <a href="{% url 'hood:updates' %}" id="links">All</a>
-            </li>
-            {% for category in category %}
-            <li class="list-group-item">
-                <a href="">{{category.category_name}}</a>
-            </li>
+          <a href="" class="px-4 py-3">
+            <button class="btn22"type="submit"><span class="iconify" data-icon="ant-design:plus-outlined" data-width="25" data-height="25"></span>
+              Post</button>
 
-            {% endfor %}
-         
-        
-            
-            
+          </a>        
 
-          </ul>
-        </div>
       </div>
      </div>
 
@@ -98,7 +80,7 @@
         {% for story in stories %}
         <div>
          <div class="str">
-          <div class="author d-flex py-2">
+          <div class="author d-flex py-2 px-3">
           <img class="authorimg" src="{{story.author.profile.avatar.url}}" alt="">
           <p class="px-1 py-1">
             <strong>{{story.author.username}}</strong>
@@ -128,42 +110,63 @@
         
       </div>
      </div>
-     <div class="col-md-3 px-4">
-      {% for alert in alerts %}
-      <div class="card" style="width: 25rem;">
-        <div class="card-header bg-info">
-          <h3 class="text-white w-bold">{{alert.title}}</h3>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><span class="iconify" data-icon="bxs:contact" style="color: #64cc90;" data-width="22" data-height="22"></span></li>
-          <li class="list-group-item"><span class="iconify" data-icon="bxs:contact" style="color: #64cc90;" data-width="22" data-height="22"></span></li>
+     
 
-        </ul>
-        <a class="btn btn-success btn-block btn-md " href="">Add business</a>
+     <div class="col-md-3 px-4">
+      
+      <div class="card" style="width: 25rem;background-color: #F7F7F7;">
+        <div class="card-header bg-info">
+          <h3 class="text-white w-bold">Upcoming events</h3>
+          
+        </div>
+        {% for event in events %}
+        <div class="events px-3 py-2">
+          <div class="card" id="event">
+            <div class="div px-2 py-2">
+              <span>
+                <span class="iconify" data-icon="ci:dot-04-l" style="color: #9826ab;" data-width="30" data-height="30"></span>10:00-11:00
+              </span>
+              <p>
+                <strong>{{event.description}}</strong>
+                
+              </p>
+
+            </div>
+           
+            
+
+          </div>
+        </div>
+        {% endfor %}
+       
 
       </div>
-      {% endfor %}
+      
         <div class="py-4">
         <div class="card" style="width: 25rem;">
           <div class="card-header">
-          <h3>Neighbourhood updates</h3>
+          <h3>Alerts</h3>
           </div>
-          <ul class="list-group list-group-flush " id="ul">
-            <li class="list-group-item">
-                <a href="{% url 'hood:updates' %}" id="links">All</a>
-            </li>
-            {% for category in category %}
-            <li class="list-group-item">
-                <a href="">{{category.category_name}}</a>
-            </li>
-
-            {% endfor %}
-         
-        
-            
-            
-
-          </ul>
+          {% for alert in alerts %}
+          <div class="events px-3 py-2">
+            <div class="card" id="event">
+              <div class="div px-2 py-2">
+                <span>
+                  <strong>{{alert.title}}</strong>
+                </span>
+                <p>
+                  {{alert.description | truncatewords:6}}
+                  
+                </p>
+  
+              </div>
+             
+              
+  
+            </div>
+          </div>
+          {% endfor %}
+          
         </div>
       </div>
      </div>
