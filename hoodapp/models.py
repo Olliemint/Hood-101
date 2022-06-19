@@ -24,6 +24,9 @@ class Neighbourhood(models.Model):
     occupants_count = models.IntegerField(default=0,blank=True,null=True)
     police_num = models.IntegerField()
     hospital_num = models.IntegerField()
+    def __str__(self):
+        
+        return self.name
     
     
 class Business(models.Model):
@@ -34,6 +37,9 @@ class Business(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.TextField(max_length=1000)
     image = models.ImageField(default='business.jpg',upload_to='bizimages', blank=True)
+    def __str__(self):
+        
+        return self.name
     
     
 class Profile(models.Model):

@@ -17,7 +17,26 @@
 
 </head>
 <body>
-    {% include "navbar.html" %}
+  <nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="{% url 'hood:business' %}">Business</a></li>
+        <li><a href="{% url 'hood:updates' %}">Updates</a></li>
+        <li><a href="">Contact</a></li>
+    </ul>
+</nav>
+<a href="{% url 'hood:login' %}">
+<button class="btn" id="btn1">Log In</button>
+
+</a>
+
+<a href="{% url 'hood:register' %}">
+    
+<button class="btn" id="btn2">Sign Up</button>
+
+</a>
+
+</div>
     {% block content %}  </h1> {%endblock%}
 
     {% block scripts %}

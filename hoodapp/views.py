@@ -1,3 +1,4 @@
+from multiprocessing import context
 import re
 from .forms import *
 from django.shortcuts import render,redirect
@@ -21,10 +22,20 @@ def Updates_view(request):
     
     return render(request, 'hood/updates.html')
 
-
+@login_required(login_url='hood:login') 
 def Business_view(request):
-    
-    return render(request, 'hood/business.html')
+    if request.user.profile.neighbourhood is None:
+        messages.success(request, 'Please fillout you Neighbourhood')
+        return redirect('hood:profile')
+    else:
+        
+        business = Business.objects.filter(
+            neighbourhood=request.user.profile.neighbourhood)
+        
+    context = {
+        'business': business
+    }
+    return render(request, 'hood/business.html',context)
 
 
 def Neighbourhood_view(request):
@@ -105,7 +116,7 @@ def Profile(request):
             u_form.save()
             p_form.save()
             messages.success(request, f'Account updated!')
-            return redirect('profile')
+            return redirect('hood:home')
 
     else:
         u_form = UserForm(instance=request.user)

@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'hoodcss/style.css' %}?{% now "U" %}" type="text/css">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -46,48 +48,66 @@
 
 
       
-<div class="container">
-  <div class="row row-cols-1 row-cols-md-2">
-      <div class="col mb-4">
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1609780447631-05b93e5a88ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZnJ1aXQlMjBtYXJrZXR8ZW58MHx8MHx8&w=1000&q=80" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+<div class="container-fluid">
+  <div class="row px-1 py-4">
+    <div class="col-md-2">
+      <div class="card" style="width: 18rem;">
+          <div class="card-header">
+            Updates
           </div>
+          <ul class="list-group list-group-flush " id="ul">
+            <li class="list-group-item">
+                <a href="" id="links">All</a>
+            </li>
+            <li class="list-group-item">
+                <a href="">Alerts{{ category.name}}</a>
+            </li>
+          </li>
+          <li class="list-group-item">
+              <a href="">Announcemets{{ category.name}}</a>
+          </li>
+        </li>
+        <li class="list-group-item">
+            <a href="">Events{{ category.name}}</a>
+        </li>
+        
+            
+              <a class="btn btn-dark btn-block btn-sm m-1" href="">add post</a>
+            
+
+          </ul>
         </div>
-      </div>
-      <div class="col mb-4">
-        <div class="card">
-          <img src="https://c8.alamy.com/comp/HGG8JG/berlin-neuklln-karl-marx-strasse-beautyholic-boutique-clothing-shop-HGG8JG.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+     </div>
+     <div class="col-md-10">
+      <div class="row px-4">
+        {% for business in business %}
+        <div class="col-md-6 d-flex py-4">
+          <div class="imgsec">
+            <img src="{{business.image.url}}" alt="" srcset="">
           </div>
-        </div>
-      </div>
-      <div class="col mb-4">
-        <div class="card">
-          <img src="https://media.istockphoto.com/photos/tropical-resort-picture-id536048545?k=20&m=536048545&s=612x612&w=0&h=tb_YEVpSL5DZCnrX7kPGswl8vHJNsx5bhykCBicBvh8=" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+          <div class="desc px-4">
+            <h3>{{business.name}}</h3>
+            <p><span class="iconify" data-icon="carbon:location-filled" style="color: #64cc90;" data-width="20" data-height="20"></span>~<strong>{{business.neighbourhood}}</strong></p>
+
+            <p>{{business.description}}</p>
+            <p><span class="iconify" data-icon="ic:round-email" style="color: #64cc90;" data-width="20" data-height="20"></span>~<strong style="font-style: italic;">{{business.email_address}}</strong></p>
+
+            <a href="">
+              <button class="btn1" type="submit">View</button>
+            </a>
           </div>
+          
         </div>
+        
+      
+        {% endfor %}
+        
       </div>
-      <div class="col mb-4">
-        <div class="card">
-          <img src="https://media.istockphoto.com/photos/children-at-zoo-feeding-giraffe-picture-id474690025?k=20&m=474690025&s=612x612&w=0&h=rfv7GbJ5Aj65TEzVuUUwRMZtlM_Dk5oQY00xE2vt8zg=" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+     </div>
+  </div>
 </div>
     
     
-        
+<script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>      
 </body>
 </html>
