@@ -31,9 +31,13 @@ def Business_view(request):
         
         business = Business.objects.filter(
             neighbourhood=request.user.profile.neighbourhood)
-        
+    neibdetails = Neighbourhood.objects.get(
+            name=request.user.profile.neighbourhood)
+    category = Category.objects.all()    
     context = {
-        'business': business
+        'business': business,
+        'category': category,
+        'neibdetails': neibdetails
     }
     return render(request, 'hood/business.html',context)
 
@@ -88,7 +92,7 @@ def Login_view(request):
         if user is not None:
             login(request, user)
             # Redirect to a success page.
-            return redirect('hood:profile')
+            return redirect('hood:home')
             
         else:
             # Return an 'invalid login' error message.

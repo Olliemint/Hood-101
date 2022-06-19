@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.forms import CharField
 
 # Create your models here.
 
@@ -22,8 +23,8 @@ class Neighbourhood(models.Model):
     name = models.CharField(max_length=255)
     location = models.ForeignKey(Location,on_delete=models.CASCADE)
     occupants_count = models.IntegerField(default=0,blank=True,null=True)
-    police_num = models.IntegerField()
-    hospital_num = models.IntegerField()
+    police_num = models.CharField(max_length=255,null=True,blank=True)
+    hospital_num = models.CharField(max_length=255,null=True,blank=True)
     def __str__(self):
         
         return self.name
