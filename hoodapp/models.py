@@ -37,13 +37,14 @@ class Business(models.Model):
     
     
 class Profile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone_number = models.IntegerField(null=True, blank=True)
     bio = models.TextField(max_length=1500,null=True,blank=True)
-    email_address = models.EmailField(max_length=255,null=True, blank=True) 
     avatar = models.ImageField(default='avatar.jpg',upload_to='profiles')
     neighbourhood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE,blank=True,null=True)
-    location = models.ForeignKey(Location, on_delete=models.CASCADE, blank=True,null=True)   
+    location = models.ForeignKey(Location, on_delete=models.CASCADE, blank=True,null=True) 
+    def __str__(self):
+        return f'{self.user.username} Profile'  
     
     
 
