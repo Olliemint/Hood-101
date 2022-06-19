@@ -25,4 +25,29 @@
 }
 .btn1:hover{
     background-color: orangered;
+    transform: scale(1.1);
+    transition: .2s ease-in-out;
+}
+.prof{
+    height: 37px;
+    width: 37px;
+    border-radius: 50%;
+}
+#cardstory{
+    border: 10px 10px 10px 10px;
+    margin-left: 2rem;
+}
+.authorimg{
+
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+
+}
+.storysec img{
+    width: 25rem;
+    border-radius: 10px 10px 10px 10px;
+    height: 15rem;
+
+
 }

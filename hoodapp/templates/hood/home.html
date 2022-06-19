@@ -1,6 +1,5 @@
 
 {% load static%}
-{% load bootstrap5 %}
 
 {% block content %}
 
@@ -10,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'hoodcss/home.css' %}">
     <title>Home</title>
 </head>
 <body>
@@ -25,16 +24,36 @@
                     <li><a href="">Contact</a></li>
                 </ul>
             </nav>
-            <a href="{% url 'hood:login' %}">
-            <button class="btn" id="btn1">Log In</button>
+            {% if user.is_authenticated %}
+            
+            <a href="{% url 'hood:logout'%}">
+            <button class="btn" id="btn2">Sign out</button>
 
             </a>
+            <div class="div">
+                <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                      <img class="prof" src="{{user.profile.avatar.url}}" alt="" srcset="">
+                    </a>
+                  
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </div>
+            </div>
+            {% else %}
+             <a href="{% url 'hood:login'%}">
+                <button class="btn" id="btn1">Log In</button>
+    
+                </a>
+                <a href="{% url 'hood:register'%}">
+                <button class="btn" id="btn2">Sign Up</button>
+    
+                </a>
 
-            <a href="{% url 'hood:register' %}">
-                
-            <button class="btn" id="btn2">Sign Up</button>
-
-            </a>
+            {% endif %}
             
         </div>
         <div class="content">
@@ -42,11 +61,13 @@
             <h1>HOOD</h1>
             <p>"There is no power for change greater than a community discovering what it cares about." <br>– Margaret J. Wheatley
             </p>
+            <a href="{% url 'hood:login' %}">
             <button class="btn3">Explore</button>
+
+
+            </a>
            </div>
-        <div class="pepsi">
-        <img src="images/pepsi.png" alt="">
-        </div>
+       
        </div>
    </div>
 </body>

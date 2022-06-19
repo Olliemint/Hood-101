@@ -20,7 +20,18 @@ def home(request):
 
 def Updates_view(request):
     
-    return render(request, 'hood/updates.html')
+    stories = Hood_update.objects.filter(category__category_name='Announcements',
+        neighbourhood=request.user.profile.neighbourhood)
+    
+    alerts = Hood_update.objects.filter(category__category_name='Alerts',
+        neighbourhood=request.user.profile.neighbourhood)
+    
+    context = {
+        'stories': stories,
+        'alerts': alerts
+        }
+    
+    return render(request, 'hood/updates.html',context)
 
 @login_required(login_url='hood:login') 
 def Business_view(request):
@@ -105,7 +116,7 @@ def Login_view(request):
 
 def Logout_view(request):
     logout(request)
-    return redirect('hood:login')
+    return redirect('hood:home')
     # Redirect to a success page.
     
     

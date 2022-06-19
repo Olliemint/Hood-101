@@ -62,6 +62,11 @@ class Hood_update(models.Model):
     author = models.ForeignKey(User,on_delete=models.CASCADE,blank=True,null=True)
     neighbourhood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE,blank=True,null=True)
     category = models.ForeignKey(Category,on_delete=models.CASCADE,null=False,blank=False)
+    image = models.ImageField(default='business.jpg',upload_to='bizimages', blank=True)
+    
+    def __str__(self):
+        
+        return self.title
   
             
     

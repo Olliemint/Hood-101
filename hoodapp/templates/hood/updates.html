@@ -7,20 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'hoodcss/style.css' %}?{% now "U" %}" type="text/css">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
- 
-
 
   </head>
-  <body> 
+  <body>     
 
-
+ 
     <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">HOOD</a>
+      <a class="navbar-brand" href="{% url 'hood:home' %}">HOOD</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -35,97 +35,142 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'hood:updates' %}">Updates</a>
           </li>
-          
          
         </ul>
-       
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          
         </form>
       </div>
     </nav>
 
 
-  
-    <div class="container">
-       <div class="row">
-           <div class="col-md-3">
-            <div class="card" style="width: 18rem;">
-                <div class="card-header">
-                  Updates
-                </div>
-                <ul class="list-group list-group-flush " id="ul">
-                  <li class="list-group-item">
-                      <a href="" id="links">All</a>
-                  </li>
-                  <li class="list-group-item">
-                      <a href="">Alerts{{ category.name}}</a>
-                  </li>
-                </li>
-                <li class="list-group-item">
-                    <a href="">Announcemets{{ category.name}}</a>
-                </li>
-              </li>
-              <li class="list-group-item">
-                  <a href="">Events{{ category.name}}</a>
-              </li>
-              
-                  
-                    <a class="btn btn-dark btn-block btn-sm m-1" href="">add post</a>
-                  
+      
+<div class="container-fluid" id="main">
+  <div class="row px-1 py-4">
+    <div class="col-md-1">
 
-                </ul>
-              </div>
-           </div>
-           
-               
-                    
-<div class="col-md-9">
-  <div class="row">
-    
-      <div class="col-md-4">
-          <div class="card m-1" id="card">
-              <img src="https://thumbs.dreamstime.com/b/street-vendor-mexico-13513544.jpg" class="card-img-top" alt="..." style="width: 100%;">
-              <div class="card-body">
-                  <small>Category: {{photo.category.name}}</small>
-              </div>
-              <a class="btn btn-outline-dark btn-sm m-1" href="">View</a>
-            </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card m-1" id="card">
-            <img src="https://thumbs.dreamstime.com/b/street-vendor-mexico-13513544.jpg" class="card-img-top" alt="..." style="width: 100%;">
-            <div class="card-body">
-                <small>Category: {{photo.category.name}}</small>
-            </div>
-            <a class="btn btn-outline-dark btn-sm m-1" href="">View</a>
-          </div>
     </div>
-
-    <div class="col-md-4">
-      <div class="card m-1" id="card">
-          <img src="https://thumbs.dreamstime.com/b/street-vendor-mexico-13513544.jpg" class="card-img-top" alt="..." style="width: 100%;">
-          <div class="card-body">
-              <small>Category: {{photo.category.name}}</small>
-          </div>
-          <a class="btn btn-outline-dark btn-sm m-1" href="">View</a>
+    <div class="col-md-2">
+      
+      <div class="card" style="width: 18rem;">
+        <div class="card-header bg-info">
+          <h3 class="text-white w-bold">{{neibdetails.name}}</h3>
         </div>
-  </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><span class="iconify" data-icon="bxs:contact" style="color: #64cc90;" data-width="22" data-height="22"></span>~{{neibdetails.hospital_num}}</li>
+          <li class="list-group-item"><span class="iconify" data-icon="bxs:contact" style="color: #64cc90;" data-width="22" data-height="22"></span>~{{neibdetails.police_num}}</li>
 
+        </ul>
+        <a class="btn btn-success btn-block btn-md " href="">Add business</a>
+
+      </div>
+        <div class="py-4">
+        <div class="card" style="width: 18rem;">
+          <div class="card-header">
+          <h3>Neighbourhood updates</h3>
+          </div>
+          <ul class="list-group list-group-flush " id="ul">
+            <li class="list-group-item">
+                <a href="{% url 'hood:updates' %}" id="links">All</a>
+            </li>
+            {% for category in category %}
+            <li class="list-group-item">
+                <a href="">{{category.category_name}}</a>
+            </li>
+
+            {% endfor %}
+         
+        
+            
+            
+
+          </ul>
+        </div>
+      </div>
+     </div>
 
      
-    
+     
+
+     <div class="col-md-3 card" id="cardstory">
+      <div class="row">
+        {% for story in stories %}
+        <div>
+         <div class="str">
+          <div class="author d-flex py-2">
+          <img class="authorimg" src="{{story.author.profile.avatar.url}}" alt="">
+          <p class="px-1 py-1">
+            <strong>{{story.author.username}}</strong>
+          </p>
+
+          </div>
+
+          
+          
+         </div>
+         <div class="storysec px-3">
+          <img src="{{story.image.url}}" alt="" srcset="">
+          <h5>{{story.title}}</h5>
+
+          <p>{{story.description | truncatewords:10}}</p>
+         </div>
+          
+        </div>
+        {% empty %}
+
+        <div>
+          <h3>no story</h3>
+        </div>
+        
       
+        {% endfor %}
+        
+      </div>
+     </div>
+     <div class="col-md-3 px-4">
+      {% for alert in alerts %}
+      <div class="card" style="width: 25rem;">
+        <div class="card-header bg-info">
+          <h3 class="text-white w-bold">{{alert.title}}</h3>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><span class="iconify" data-icon="bxs:contact" style="color: #64cc90;" data-width="22" data-height="22"></span></li>
+          <li class="list-group-item"><span class="iconify" data-icon="bxs:contact" style="color: #64cc90;" data-width="22" data-height="22"></span></li>
+
+        </ul>
+        <a class="btn btn-success btn-block btn-md " href="">Add business</a>
+
+      </div>
+      {% endfor %}
+        <div class="py-4">
+        <div class="card" style="width: 25rem;">
+          <div class="card-header">
+          <h3>Neighbourhood updates</h3>
+          </div>
+          <ul class="list-group list-group-flush " id="ul">
+            <li class="list-group-item">
+                <a href="{% url 'hood:updates' %}" id="links">All</a>
+            </li>
+            {% for category in category %}
+            <li class="list-group-item">
+                <a href="">{{category.category_name}}</a>
+            </li>
+
+            {% endfor %}
+         
+        
+            
+            
+
+          </ul>
+        </div>
+      </div>
+     </div>
   </div>
 </div>
-
-
-</div>
-    </div>
-  </div>
-  
+    
+    
+<script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>      
 </body>
 </html>

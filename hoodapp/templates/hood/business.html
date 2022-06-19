@@ -20,7 +20,7 @@
 
  
     <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">HOOD</a>
+      <a class="navbar-brand" href="{% url 'hood:home' %}">HOOD</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -35,9 +35,7 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'hood:updates' %}">Updates</a>
           </li>
-          <li class="nav-item">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">ADD</button>
-          </li>
+         
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -61,6 +59,8 @@
           <li class="list-group-item"><span class="iconify" data-icon="bxs:contact" style="color: #64cc90;" data-width="22" data-height="22"></span>~{{neibdetails.police_num}}</li>
 
         </ul>
+        <a class="btn btn-success btn-block btn-md " href="">Add business</a>
+
       </div>
         <div class="py-4">
         <div class="card" style="width: 18rem;">
@@ -69,7 +69,7 @@
           </div>
           <ul class="list-group list-group-flush " id="ul">
             <li class="list-group-item">
-                <a href="" id="links">All</a>
+                <a href="{% url 'hood:updates' %}" id="links">All</a>
             </li>
             {% for category in category %}
             <li class="list-group-item">
@@ -80,7 +80,6 @@
          
         
             
-              <a class="btn btn-success btn-block btn-md m-1" href="">Add updates</a>
             
 
           </ul>
@@ -108,6 +107,11 @@
             </a>
           </div>
           
+        </div>
+        {% empty %}
+
+        <div>
+          <h3>no businesses posted yet</h3>
         </div>
         
       

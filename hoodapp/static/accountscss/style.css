@@ -7,3 +7,16 @@
     font-family: 'Poppins', sans-serif;
 
 }
+
+#login{
+    height: 100vh;
+    width: 100%;
+    background-image: url(https://a0.muscache.com/pictures/2a4bf55b-ed9b-434c-9a78-5a435b52ad22.jpg);
+    background-position: center;
+    background-size: cover;
+    padding-right: 3%;
+    padding-left: 5%;
+    box-sizing: border-box;
+    position: relative;
+
+}
