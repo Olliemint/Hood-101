@@ -192,14 +192,19 @@
 
           <label for="">Description:</label>
           <input type="text" class="form-control" name="description" id="description" placeholder="Enter description" required><br>
-          <label for="">Category:</label>
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Select category</option>
-            {% for category in categories %}
-            <option name="category" value="{{ category.id}}">{{category.category_name}}</option>
-            {% endfor %}
-            
-          </select>
+          
+          <div class="form-group m-3">
+            <label>Select a category</label>
+            <select name="category" class="form-control">
+                <option value="none">Select category...</option>
+                {% for category in categories %}
+                <option value="{{category.category_name }}">{{  category.category_name }}</option>
+
+
+
+                {% endfor %}
+            </select>
+          </div>
           <br>
           <label for="">Image:</label>
           <input type="file" class="form-control" name="upload" id="upload">

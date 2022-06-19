@@ -1,6 +1,7 @@
 from time import time
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import Q
 
 
 # Create your models here.
@@ -13,11 +14,18 @@ class Location(models.Model):
         return self.name
     
     
+    def save_location(self):
+        self.save()
+    
+    
 class Category(models.Model):
     category_name = models.CharField(max_length=80,null=False,blank=False)
     def __str__(self):
     
         return self.category_name
+    
+    def save_category(self):
+        self.save()
 
 
 class Neighbourhood(models.Model):
@@ -29,6 +37,22 @@ class Neighbourhood(models.Model):
     def __str__(self):
         
         return self.name
+    
+    def create_neigborhood(self):
+        self.save()
+
+    @classmethod
+    def delete_neigbourhood(cls, id):
+        cls.objects.filter(id=id).delete()
+
+    @classmethod
+    def find_neigbourhood(cls, searchterm):
+        searchresults = cls.objects.filter(Q(name__icontains=searchterm))
+        return searchresults
+
+    @classmethod
+    def update_neighbourhood(cls, id, name):
+        cls.objects.filter(id=id).update(name=name)
     
     
 class Business(models.Model):
