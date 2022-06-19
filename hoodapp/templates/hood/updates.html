@@ -1,0 +1,131 @@
+{% load static%}
+{% load bootstrap5 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ 
+
+
+  </head>
+  <body> 
+
+
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">HOOD</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+         
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'hood:business' %}">Business</a>
+          </li>
+        
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'hood:updates' %}">Updates</a>
+          </li>
+          
+         
+        </ul>
+       
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          
+        </form>
+      </div>
+    </nav>
+
+
+  
+    <div class="container">
+       <div class="row">
+           <div class="col-md-3">
+            <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                  Updates
+                </div>
+                <ul class="list-group list-group-flush " id="ul">
+                  <li class="list-group-item">
+                      <a href="" id="links">All</a>
+                  </li>
+                  <li class="list-group-item">
+                      <a href="">Alerts{{ category.name}}</a>
+                  </li>
+                </li>
+                <li class="list-group-item">
+                    <a href="">Announcemets{{ category.name}}</a>
+                </li>
+              </li>
+              <li class="list-group-item">
+                  <a href="">Events{{ category.name}}</a>
+              </li>
+              
+                  
+                    <a class="btn btn-dark btn-block btn-sm m-1" href="">add post</a>
+                  
+
+                </ul>
+              </div>
+           </div>
+           
+               
+                    
+<div class="col-md-9">
+  <div class="row">
+    
+      <div class="col-md-4">
+          <div class="card m-1" id="card">
+              <img src="https://thumbs.dreamstime.com/b/street-vendor-mexico-13513544.jpg" class="card-img-top" alt="..." style="width: 100%;">
+              <div class="card-body">
+                  <small>Category: {{photo.category.name}}</small>
+              </div>
+              <a class="btn btn-outline-dark btn-sm m-1" href="">View</a>
+            </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card m-1" id="card">
+            <img src="https://thumbs.dreamstime.com/b/street-vendor-mexico-13513544.jpg" class="card-img-top" alt="..." style="width: 100%;">
+            <div class="card-body">
+                <small>Category: {{photo.category.name}}</small>
+            </div>
+            <a class="btn btn-outline-dark btn-sm m-1" href="">View</a>
+          </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card m-1" id="card">
+          <img src="https://thumbs.dreamstime.com/b/street-vendor-mexico-13513544.jpg" class="card-img-top" alt="..." style="width: 100%;">
+          <div class="card-body">
+              <small>Category: {{photo.category.name}}</small>
+          </div>
+          <a class="btn btn-outline-dark btn-sm m-1" href="">View</a>
+        </div>
+  </div>
+
+
+     
+    
+      
+  </div>
+</div>
+
+
+</div>
+    </div>
+  </div>
+  
+</body>
+</html>

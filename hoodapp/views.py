@@ -1,3 +1,4 @@
+import re
 from .forms import *
 from django.shortcuts import render,redirect
 from .models import *
@@ -12,14 +13,18 @@ from django.contrib.auth.models import User
 
 
 # Create your views here.
+def home(request):
+    
+    return render(request, 'hood/home.html')
+
+def Updates_view(request):
+    
+    return render(request, 'hood/updates.html')
+
+
 def Business_view(request):
-    business = Business.objects.all()
     
-    context = {
-        'business': business
-    }
-    
-    return render(request, 'hood/home.html',context)
+    return render(request, 'hood/business.html')
 
 
 def Neighbourhood_view(request):
@@ -92,9 +97,32 @@ def Logout_view(request):
     
 @login_required(login_url='hood:login')  
 def Profile(request):
-  
+    if request.method == 'POST':
+        u_form = UserForm(request.POST, instance=request.user)
+        p_form = ProfileForm(request.POST,request.FILES, instance=request.user.profile)
+        
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, f'Account updated!')
+            return redirect('profile')
+
+    else:
+        u_form = UserForm(instance=request.user)
+        p_form = ProfileForm(instance=request.user.profile)
+        # current_profile = Profile.objects.get(user_id = request.user)
+        # current_post = Post.user_post(request.user) 
     
-    return render(request, 'accounts/profile.html')
+    
+    context = {
+       'u_form': u_form,
+       'p_form': p_form,
+       
+        
+    }
+    
+    return render(request, 'accounts/profile.html',context)
+
         
             
     

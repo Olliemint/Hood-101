@@ -1,7 +1,56 @@
-{% extends 'hood/base.html' %}
+
+{% load static%}
 
 {% block content %}
-<h1>Welcome home</h1>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <title>Home</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://thumbs.dreamstime.com/b/modern-home-logo-design-concept-modern-home-logo-design-concept-172472928.jpg" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="{% url 'hood:business' %}">Business</a></li>
+                    <li><a href="{% url 'hood:updates' %}">Updates</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="{% url 'hood:login' %}">
+            <button class="btn" id="btn1">Log In</button>
+
+            </a>
+
+            <a href="{% url 'hood:register' %}">
+                
+            <button class="btn" id="btn2">Sign Up</button>
+
+            </a>
+            
+        </div>
+        <div class="content">
+            <div class="text">
+            <h1>HOOD</h1>
+            <p>"There is no power for change greater than a community discovering what it cares about." <br>– Margaret J. Wheatley
+            </p>
+            <button class="btn3">GET STARTED</button>
+           </div>
+        <div class="pepsi">
+        <img src="images/pepsi.png" alt="">
+        </div>
+       </div>
+   </div>
+</body>
+</html>
 
 {% endblock %}
+
+

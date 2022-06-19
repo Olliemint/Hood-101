@@ -16,15 +16,14 @@
             <div class="data px-3">
                 <h3>{{user.username}}</h3>
                 <p>Email: <strong>{{user.email}}</strong></p>
-                <p>Phone number: <strong>{{user.profile.location}}</strong></p>
+                <p>Phone number: <strong>{{user.profile.phone_number}}</strong></p>
                 
                 <p>Bio: <strong>{{user.profile.bio}}</strong></p>
-                <p>Location: <strong>{{user.profile.location}}</strong></p>
                 <p>Neighbourhood: <strong>{{user.profile.neighbourhood}}</strong></p>
 
-                
+                <p>Location: <strong>{{user.profile.location}}</strong></p>
                 <button type="button" class="btn btn-success btn-md plusicon" data-bs-toggle="modal" data-bs-target="#profile">
-                    <span class="iconify" data-icon="akar-icons:edit" data-width="25" data-height="25"></span> Edit
+                    <span class="iconify" data-icon="akar-icons:edit" data-width="25" data-height="25"></span> Update
                   </button>
             </div>
         </div>
@@ -38,11 +37,15 @@
     <div class="container my-5">
         
        <div class="row d-flex justify-content-center">
-           <h1 class="text-center"></h1>
+           <h1 class="text-center">{{user.username}} Projects</h1>
            <hr>
         
            <div class="col-md-9">
                 <div class="row">
+                   
+                    <div class="col-md-4">
+                       
+                    </div>
                     
                   
                     
@@ -58,7 +61,7 @@
   
   <!-- Modal -->
   <div class="modal fade" id="profile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-lg" style="height: 10rem;">
       <div class="modal-content p-4">
         
             <span data-bs-dismiss="modal" class="d-flex justify-content-end">
@@ -70,9 +73,29 @@
         
         <form method="post" enctype="multipart/form-data" action="">
           {% csrf_token %}
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-6">
+                {% bootstrap_form p_form %}
+      
+                         
+                      </div>
+               
+                <div class="col-md-6">
+          {% bootstrap_form u_form %}
+
+                   
+                </div>
           
+                
+              
+                
+            </div>
+       </div>
+
+          <br>
           <div class="text-center">
-            <button type="submit" class="btn btn-success">Save</button>
+            <button type="submit" class="btn btn-success">Done</button>
           </div>
         </form>
    
