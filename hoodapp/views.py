@@ -72,11 +72,14 @@ def Business_view(request):
             neighbourhood=request.user.profile.neighbourhood)
     neibdetails = Neighbourhood.objects.get(
             name=request.user.profile.neighbourhood)
-    category = Category.objects.all()    
+    category = Category.objects.all()
+    count=User.objects.all().count()
     context = {
         'business': business,
         'category': category,
         'neibdetails': neibdetails,
+        'count':count,
+        
     }
     return render(request, 'hood/business.html',context)
 
