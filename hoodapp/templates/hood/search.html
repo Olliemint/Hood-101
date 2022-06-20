@@ -1,0 +1,42 @@
+{% extends 'hood/layout.html' %} 
+
+{% block content%}
+
+<div class="container my-5">
+  
+     <div class="row d-flex justify-content-center">
+         
+         <hr>
+      
+         <div class="col-md-9">
+              <div class="row">
+                 {% for data in search %}
+                  <div class="col-md-4">
+                    <div class="imgsec">
+                      <img src="{{data.image.url}}" alt="" srcset="">
+                    </div>
+                    <div class="desc px-4">
+                      <h3>{{data.name}}</h3>
+                      <p><span class="iconify" data-icon="carbon:location-filled" style="color: #64cc90;" data-width="20" data-height="20"></span>~<strong>{{data.neighbourhood}}</strong></p>
+          
+                      <p>{{data.description}}</p>
+                      <p><span class="iconify" data-icon="ic:round-email" style="color: #64cc90;" data-width="20" data-height="20"></span>~<strong style="font-style: italic;">{{data.email_address}}</strong></p>
+          
+                      <a href="">
+                        <button class="btn1" type="submit">View</button>
+                      </a>
+                    </div>
+                     
+                  </div>
+                  {% empty %}
+                  <h1>nodata</h1>
+                  {% endfor %}
+                  
+                
+                  
+              </div>
+         </div>
+     </div> 
+  </div>
+   
+{% endblock %}

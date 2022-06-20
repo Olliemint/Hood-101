@@ -3,11 +3,88 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container py-2">
+  <a class="btn btn-dark btn-lg" href="{% url 'hood:home' %}">
+    <span class="iconify" data-icon="akar-icons:arrow-back-thick" style="color: white;" data-width="25" data-height="25"></span>
+    
+</a>
+
+  <!-- <div class="outerbox">
+    <div class="box1" >
+       <div class="imagebox">
+            <img class="imageProfile rounded-circle" src="{{ user.profile.avatar.url }} " style="height: 120px; margin:10px">
+             <div class=" profiledetails">
+              <h2 style="color:black">{{user.username}}.</h2>
+              <p><strong>{{user.profile.location}}</strong></p>
+             </div>
+         </div>
+        <div class="details" style="margin-left: 30px;">
+          <p >Bio: <strong>{{user.profile.bio}}</strong></p>
+          <p>Email: <strong>{{user.email}}</strong></p>
+          <p>Phone number: <strong>{{user.profile.phone_number}}</strong></p>
+          <p>Neighbourhood: <strong>{{user.profile.neighbourhood}}</strong></p>
+
+
+
+        </div>
+        
+        <div class="profileButton">
+          <button type="button" class="btn btn-success btn-md plusicon" data-bs-toggle="modal" data-bs-target="#profile">
+            <span class="iconify" data-icon="akar-icons:edit" data-width="25" data-height="25"></span> Update
+          </button>
+            </div>
+            <div class="profileButton">
+            <button type="button" class="btn btn-md plusicon" data-bs-toggle="modal" data-bs-target="#busines">
+              <i class="bi bi-plus" ></i>
+                Add bussiness page
+              </button>
+            </div>
+            <div class="profileButton"  style="padding: 8px;">
+              <i class="bi bi-gear" style="height: 20px;" ></i>
+              </div>
+        </div>
+    </div> -->
 
     <div class="d-flex justify-content-center">
+      <div class="outerbox py-4">
+        <div class="box1" >
+           <div class="imagebox">
+                <img class="imageProfile rounded-circle" src="{{ user.profile.avatar.url }} " style="height: 120px; margin:10px">
+                 <div class=" profiledetails">
+                  <h2 style="color:black">{{user.username}}.</h2>
+                  <p><strong>{{user.profile.location}}</strong></p>
+                 </div>
+             </div>
+            <div class="details" style="margin-left: 30px;">
+              <p >Bio: <strong>{{user.profile.bio}}</strong></p>
+              <p>Email: <strong>{{user.email}}</strong></p>
+              <p>Phone number: <strong>{{user.profile.phone_number}}</strong></p>
+              <p>Neighbourhood: <strong>{{user.profile.neighbourhood}}</strong></p>
+    
+    
+    
+            </div>
+            
+            <div class="profileButton">
+              <button type="button" class="btn btn-success btn-md plusicon" data-bs-toggle="modal" data-bs-target="#profile">
+                <span class="iconify" data-icon="akar-icons:edit" data-width="25" data-height="25"></span> Update
+              </button>
+                </div>
+                <!-- <div class="profileButton">
+                <button type="button" class="btn btn-md plusicon" data-bs-toggle="modal" data-bs-target="#busines">
+                  <i class="bi bi-plus" ></i>
+                    Add bussiness page
+                  </button>
+                </div>
+                <div class="profileButton"  style="padding: 8px;">
+                  <i class="bi bi-gear" style="height: 20px;" ></i>
+                  </div> -->
+            </div>
+        </div>
 
-        <div class="profilei d-flex">
+
+
+        <!-- <div class="profilei d-flex">
             <div>
             <img class="primag" src="{{user.profile.avatar.url}}" alt="" srcset="">
 
@@ -26,7 +103,7 @@
                     <span class="iconify" data-icon="akar-icons:edit" data-width="25" data-height="25"></span> Update
                   </button>
             </div>
-        </div>
+        </div> -->
 
     </div>
 
@@ -35,17 +112,36 @@
 
 <div>
     <div class="container my-5">
+      <!-- <a class="btn btn-dark btn-lg" href="{% url 'hood:home' %}">
+        <span class="iconify" data-icon="akar-icons:arrow-back-thick" style="color: white;" data-width="25" data-height="25"></span>
+        
+    </a> --> 
         
        <div class="row d-flex justify-content-center">
-           <h1 class="text-center">{{user.username}} Projects</h1>
+           
            <hr>
         
            <div class="col-md-9">
                 <div class="row">
-                   
+                   {% for data in userdata %}
                     <div class="col-md-4">
+                      <div class="imgsec">
+                        <img src="{{data.image.url}}" alt="" srcset="">
+                      </div>
+                      <div class="desc px-4">
+                        <h3>{{data.name}}</h3>
+                        <p><span class="iconify" data-icon="carbon:location-filled" style="color: #64cc90;" data-width="20" data-height="20"></span>~<strong>{{data.neighbourhood}}</strong></p>
+            
+                        <p>{{data.description}}</p>
+                        <p><span class="iconify" data-icon="ic:round-email" style="color: #64cc90;" data-width="20" data-height="20"></span>~<strong style="font-style: italic;">{{data.email_address}}</strong></p>
+            
+                        <a href="">
+                          <button class="btn1" type="submit">View</button>
+                        </a>
+                      </div>
                        
                     </div>
+                    {% endfor %}
                     
                   
                     

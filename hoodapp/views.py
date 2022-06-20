@@ -93,11 +93,16 @@ def Neighbourhood_view(request):
     return render(request, 'hoodapp/neighbourhood.html',context)
 
 
-def Profile_view(request):
+def Search_data(req):
     
-    
-    
-    return render(request,'hoodapp/profile.html')
+    if req.method=='GET':
+        search_site = req.GET.get("search")
+        if search_site:
+            search= Business.objects.filter(Q(name__icontains=search_site)|Q(author__username__icontains=search_site))
+            print(search_site)
+            return render(req, 'hood/search.html', {'search':search})
+            
+        
 
 
 
@@ -167,10 +172,11 @@ def Profile(request):
         # current_profile = Profile.objects.get(user_id = request.user)
         # current_post = Post.user_post(request.user) 
     
-    
+    userdata = Business.objects.filter(author = request.user)
     context = {
        'u_form': u_form,
        'p_form': p_form,
+       'userdata': userdata,
        
         
     }

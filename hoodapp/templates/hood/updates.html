@@ -1,48 +1,9 @@
-{% load static%}
-{% load bootstrap5 %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'hoodcss/style.css' %}?{% now "U" %}" type="text/css">
+{% extends 'hood/layout.html' %} 
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-  </head>
-  <body>     
+{% block content%}
 
  
-    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-      <a class="navbar-brand" href="{% url 'hood:home' %}">HOOD</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-         
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'hood:business' %}">Business</a>
-          </li>
-        
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'hood:updates' %}">Updates</a>
-          </li>
-         
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div>
-    </nav>
+   
 
 
       
@@ -102,7 +63,7 @@
         {% empty %}
 
         <div>
-          <h3>no story</h3>
+          <h3>no announcements</h3>
         </div>
         
       
@@ -137,6 +98,12 @@
 
           </div>
         </div>
+        {% empty %}
+
+        <div>
+          <h3>no events</h3>
+        </div>
+        
         {% endfor %}
        
 
@@ -164,6 +131,11 @@
               
   
             </div>
+          </div>
+          {% empty %}
+
+          <div>
+            <h3>no alerts</h3>
           </div>
           {% endfor %}
           
@@ -221,9 +193,5 @@
 
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>    
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>    
-<script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>      
-</body>
-</html>
+   
+{% endblock %}

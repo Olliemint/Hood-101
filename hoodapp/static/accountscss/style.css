@@ -20,3 +20,116 @@
     position: relative;
 
 }
+
+.box1{
+    width:580px;
+    border-radius: 10px;
+    box-shadow: -6px -4px 22px -1px rgba(255,255,255,0.4);
+    -webkit-box-shadow: -6px -4px 22px -1px rgba(0,0,0,0.4);
+    -moz-box-shadow: -6px -4px 22px -1px rgba(0,0,0,0.4);;
+}
+.imagebox{
+    display: flex;
+}
+.imagebox h2{
+    margin-top: 40px;
+    margin-bottom: 5px;
+    font-weight: 900;
+    font-family: Lato, "Lucida Grande", Tahoma, sans-serif;
+    font-size: 34px;
+    font-style: italic;
+    line-height: 1;
+}
+.imagebox p{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    color: rgb(102, 102, 102);
+}
+.details p{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    color: rgb(102, 102, 102);
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+.profileButton{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+    border: 0.5px solid rgb(229, 229, 229);
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    justify-content: center;
+    text-decoration: none;
+    background-color: rgb(229, 229, 229);
+    color: rgb(0, 0, 0);
+    border-radius: 8px;
+    line-height: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+.profileButton button{
+    font-weight: 600;
+    font-size: 15px;
+    padding: 8px 16px;
+    margin-left:2px;
+}
+.connect{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 500;
+    margin-left: 20px;
+    color: #0076B6;
+}
+
+
+
+.imgsec img{
+    width: 16rem;
+    height: 16rem;
+    border-radius:  12px 12px 12px 12px;
+}
+.btn1{
+    background-color: #64CC90;
+    color: #ffffff;
+    width: 8rem;
+    height: 45px;
+    border: #64CC90;
+    border-radius: 22px 22px 22px 22px;
+    font-size: 20px;
+    font-weight: 600;
+}
+.btn1:hover{
+    background-color: orangered;
+    transform: scale(1.1);
+    transition: .2s ease-in-out;
+}
+.prof{
+    height: 37px;
+    width: 37px;
+    border-radius: 50%;
+}
+#cardstory{
+    border: 10px 10px 10px 10px;
+    margin-left: 2rem;
+    
+    height: 25rem;
+}
+.authorimg{
+
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+
+}
+.storysec img{
+    width: 25rem;
+    border-radius: 10px 10px 10px 10px;
+    height: 15rem;
+
+
+}

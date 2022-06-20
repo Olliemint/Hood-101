@@ -4,7 +4,7 @@
     padding: 0;
     font-family: 'Poppins', sans-serif;
 }
-.container {
+#cont {
     height: 100vh;
     width: 100%;
     background-image: url(https://a0.muscache.com/pictures/2a4bf55b-ed9b-434c-9a78-5a435b52ad22.jpg);
@@ -122,7 +122,7 @@ nav ul li a {
 .btn3 {
     background: linear-gradient(to bottom, #cbcbcb 2%, #fff 100%);
     margin-top: 60px;
-    margin-left: 140px;
+    margin-left: 100px;
     padding: 15px 30px;
     text-align: center;
     transition: .5s;
@@ -135,12 +135,4 @@ nav ul li a {
     border-radius: 30px;
     box-shadow: 1px 4px 12px rgba(94,28,68,.15);
 }
-.pepsi {
-    display: flex;
-    height: 100%;
-    position: absolute;
-    width: 600px;
-    margin-top: 80px;
-    padding-left: 440px;
-    justify-content: flex-end;
-}
+
