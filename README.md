@@ -1,6 +1,6 @@
 
-# Project Title
-Hoodville
+## Hoodville
+
 [![hoodlanding.png](https://i.postimg.cc/fT6nBkJ7/hoodlanding.png)](https://postimg.cc/9rtnfmPz)
 ## User story
 #### -Sign in with the application to start using.
@@ -10,6 +10,7 @@ Hoodville
 #### -Create Posts that will be visible to everyone in my neighborhood.
 #### -Change My neighborhood when I decide to move out.
 #### -Only view details of a single neighborhood.
+
 ## Setup and installation
 To get the project .......
 ### Cloning the repository:
