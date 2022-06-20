@@ -2,6 +2,9 @@
 ## Hoodville
 
 [![hoodlanding.png](https://i.postimg.cc/fT6nBkJ7/hoodlanding.png)](https://postimg.cc/9rtnfmPz)
+
+### Description
+This a django web application that allows registered users to know about everything happening in your current neighborhood and also view business posted by occupants and also ability to post his/her business
 ## User story
 #### -Sign in with the application to start using.
 #### -Set up a profile about me and a general location and my neighborhood name.
