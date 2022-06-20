@@ -28,6 +28,7 @@ def Updates_view(request):
         image = request.FILES.get('upload')
         print(category)
         post = Hood_update.objects.create(title=title, description=description, author=author, neighbourhood = neighbourhood,category=category, image=image)
+        
     
     stories = Hood_update.objects.filter(category__category_name='Announcements',
         neighbourhood=request.user.profile.neighbourhood)
