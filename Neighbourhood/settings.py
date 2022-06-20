@@ -29,6 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'hood-ville.herokuapp.com',
+    '127.0.0.1',
 ]
 
 
