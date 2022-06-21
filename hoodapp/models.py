@@ -30,7 +30,7 @@ class Category(models.Model):
 
 class Neighbourhood(models.Model):
     name = models.CharField(max_length=255)
-    location = models.ForeignKey(Location,on_delete=models.CASCADE)
+    location = models.ForeignKey(Location,on_delete=models.CASCADE,blank=True)
     occupants_count = models.IntegerField(default=0,blank=True,null=True)
     police_num = models.CharField(max_length=255,null=True,blank=True)
     hospital_num = models.CharField(max_length=255,null=True,blank=True)

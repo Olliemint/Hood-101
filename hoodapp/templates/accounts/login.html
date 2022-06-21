@@ -109,14 +109,18 @@
 					</form>
 
 				</div>
-                {% for message in messages %}
-				<div class="col-md-4 offset-md-3">
-                <p class="message">{{message}}</p>
+				<div class="inf d-flex justify-content-center">
+					{% for message in messages %}
+					<div class="card d-flex justify-content-center px-2 py-4" style="width: 20rem; height:4rem">
+					<p class="message text-danger px-3 py-3">{{message}}</p>
+			
+					</div>
+	
+	
+			{% endfor %}
 
-                </div>
-
-
-                {% endfor %}
+				</div>
+			
 		
 				
 			</div>

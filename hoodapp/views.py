@@ -29,15 +29,18 @@ def Updates_view(request):
         print(category)
         post = Hood_update.objects.create(title=title, description=description, author=author, neighbourhood = neighbourhood,category=category, image=image)
         
-    
-    stories = Hood_update.objects.filter(category__category_name='Announcements',
+    if request.user.profile.neighbourhood is None:
+        messages.warning(request, 'Please update Neighbourhood to view updates or business')
+        return redirect('hood:profile')
+    else:
+        stories = Hood_update.objects.filter(category__category_name='Announcements',
+            neighbourhood=request.user.profile.neighbourhood)
+        
+        alerts = Hood_update.objects.filter(category__category_name='Alerts',
+            neighbourhood=request.user.profile.neighbourhood)
+        
+        events = Hood_update.objects.filter(category__category_name='Events',
         neighbourhood=request.user.profile.neighbourhood)
-    
-    alerts = Hood_update.objects.filter(category__category_name='Alerts',
-        neighbourhood=request.user.profile.neighbourhood)
-    
-    events = Hood_update.objects.filter(category__category_name='Events',
-    neighbourhood=request.user.profile.neighbourhood)
     
     neibdetails = Neighbourhood.objects.get(
             name=request.user.profile.neighbourhood)
@@ -65,7 +68,8 @@ def Business_view(request):
         biz = Business.objects.create(name=name,email_address=email_address,neighbourhood=neighbourhood,author=author,description=description,image=image)
     
     if request.user.profile.neighbourhood is None:
-        messages.success(request, 'Please fillout you Neighbourhood')
+        messages.warning(request, 'Please update Neighbourhood to view updates or business')
+
         return redirect('hood:profile')
     else:
         

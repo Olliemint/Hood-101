@@ -70,6 +70,17 @@
                 <span class="iconify" data-icon="akar-icons:edit" data-width="25" data-height="25"></span> Update
               </button>
                 </div>
+                <div class="inf d-flex justify-content-center">
+                  {% for message in messages %}
+                  <div class="card d-flex justify-content-center px-2 py-4" style="width: 20rem; height:4rem">
+                  <p class="message text-danger px-3 py-3">{{message}}</p>
+              
+                  </div>
+          
+          
+              {% endfor %}
+        
+                </div>
                 <!-- <div class="profileButton">
                 <button type="button" class="btn btn-md plusicon" data-bs-toggle="modal" data-bs-target="#busines">
                   <i class="bi bi-plus" ></i>
